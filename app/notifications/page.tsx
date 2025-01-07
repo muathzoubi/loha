@@ -52,7 +52,7 @@ interface Notification {
 export default function NotificationsPage() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [audio, setAudio] = useState<HTMLAudioElement>();
+  const [audio, setAudio] = useState<HTMLAudioElement>(new Audio('/audio/notif.wav'));
   const [pageName, setPagename] = useState<string>('');
   const [message, setMessage] = useState<boolean>(false);
 
@@ -64,7 +64,6 @@ export default function NotificationsPage() {
   const router = useRouter();
 
   const playNotificationSound = () => {
-    setAudio(new Audio('/notif.wav'));
     if (audio) {
       audio!.play().catch((error) => {
         console.error('Failed to play sound:', error);

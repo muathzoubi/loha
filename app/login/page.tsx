@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { auth } from '@/lib/firestore';
+import { sendNotification } from '../actions/push';
 
 interface LoginFormData {
   email: string;
@@ -31,6 +32,9 @@ export default function LoginPage() {
 
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
+    
+      sendNotification({title
+      :"hello",sid:"12",target_url:"https://aldashroe.netlify.app/"})  
       router.push('/notifications');
     } catch (err) {
       setError('فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد الخاصة بك.');
