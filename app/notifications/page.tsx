@@ -340,7 +340,7 @@ export default function NotificationsPage() {
                       setMessage(false);
                     }, 3000);
                   }}
-                  className="w-full m-3"
+                  className="w-full m-3 bg-green-500"
                 >
                   قبول
                 </Button>
