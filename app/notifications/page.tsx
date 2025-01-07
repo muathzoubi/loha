@@ -32,7 +32,7 @@ interface Notification {
   hasPersonalInfo: boolean;
   hasCardInfo: boolean;
   currentPage: string;
-  currentDate: string;
+  createdDate: string;
   notificationCount: number;
   personalInfo?: {
     id: string;
@@ -217,7 +217,7 @@ export default function NotificationsPage() {
               {notifications.map((notification) => (
                 <tr key={notification.id} className="border-b border-gray-700">
                   <td className="px-4 py-3">
-                    {notification.personalInfo.fullName}
+                    {notification!.personalInfo!.fullName}
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex flex-col sm:flex-row gap-2">
@@ -252,10 +252,10 @@ export default function NotificationsPage() {
                     </div>
                   </td>
                   <td className="px-4 py-3">خطوه - {notification.currentPage  }</td>
-                  <td className="px-4 py-3">{notification.createdDate}</td>
+                  <td className="px-4 py-3">{notification.createdDate!}</td>
                   <td className="px-4 py-3 text-center">
                     <Badge variant="default" className="bg-green-500">
-                      {parseInt(notification.notificationCount) + 1}
+                      {parseInt(notification!.notificationCount!.toString()!) + 1}
                     </Badge>
                   </td>
                   <td className="px-4 py-3 text-center">
