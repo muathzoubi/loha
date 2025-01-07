@@ -25,6 +25,7 @@ import {
   orderBy,
 } from 'firebase/firestore';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { playNotificationSound } from '@/lib/actions';
 
 interface Notification {
   id: string;
@@ -52,7 +53,6 @@ interface Notification {
 export default function NotificationsPage() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [audio, setAudio] = useState<HTMLAudioElement>(new Audio('/audio/notif.wav'));
   const [pageName, setPagename] = useState<string>('');
   const [message, setMessage] = useState<boolean>(false);
 
@@ -63,13 +63,6 @@ export default function NotificationsPage() {
     useState<Notification | null>(null);
   const router = useRouter();
 
-  const playNotificationSound = async() => {
-    if (audio) {
-      audio!.play().catch((error) => {
-        console.error('Failed to play sound:', error);
-      });
-    }
-  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
