@@ -63,7 +63,7 @@ export default function NotificationsPage() {
     useState<Notification | null>(null);
   const router = useRouter();
 
-  const playNotificationSound = () => {
+  const playNotificationSound = async() => {
     if (audio) {
       audio!.play().catch((error) => {
         console.error('Failed to play sound:', error);
@@ -87,6 +87,7 @@ export default function NotificationsPage() {
   }, [router]);
 
   const fetchNotifications = () => {
+  
     setIsLoading(true);
     const q = query(collection(db, 'pays'), orderBy('createdDate', 'desc'));
     const unsubscribe = onSnapshot(
