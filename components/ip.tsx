@@ -38,25 +38,7 @@ export default function IPLocation() {
 
   return (
     <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>IP Location</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Button onClick={fetchLocation} disabled={loading}>
-          {loading ? 'Loading...' : 'Get My Location'}
-        </Button>
-        {error && <p className="text-red-500 mt-2">{error}</p>}
-        {location && (
-          <div className="mt-4">
-            <p><strong>City:</strong> {location.city}</p>
-            <p><strong>Country:</strong> {location.country}</p>
-            <p><strong>Region:</strong> {location.countryRegion}</p>
-            <p><strong>Latitude:</strong> {location.latitude}</p>
-            <p><strong>Longitude:</strong> {location.longitude}</p>
-            <p><strong>Vercel Region:</strong> {location.region}</p>
-          </div>
-        )}
-      </CardContent>
+    
     </Card>
   )
 }
